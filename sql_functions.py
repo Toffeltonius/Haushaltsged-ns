@@ -18,6 +18,7 @@ def get_sql_config():
 
 import sqlalchemy as sql
 import pandas as pd
+import psycopg2
 
 # Insert the get_data() function definition below - do this only when instructed in the notebook
 
