@@ -37,3 +37,5 @@ DELETE FROM kapitel
 WHERE state_id = 13; --weil duplicates nicht gedropt waren
 
 --anschließend neuerlicher upload via python
+
+GRANT INSERT, REFERENCES, SELECT, TRIGGER, DELETE, TRUNCATE, UPDATE ON TABLE capstone_public_budgeting.state_data TO ridvankücük;
