@@ -131,3 +131,6 @@ dmypy.json
 #von Juls ergänzt
 data/
 Daten/
+
+#rk
+upload_budget.ipynb
