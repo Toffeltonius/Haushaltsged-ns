@@ -6,7 +6,7 @@ import sql_functions as sf
 #from sql_functions import get_dataframe
 import psycopg2
 
-
+# function for updating the functionlist in database
 def update_fkz(dataframe):
     sf.get_sql_config()
     engine = sf.get_engine()
@@ -23,7 +23,7 @@ def update_fkz(dataframe):
     sf.push_to_database(df_function_con, "funktionsbezeichnungen", engine, "capstone_public_budgeting")
     return
 
-
+# function for updating the grouplist in database
 def update_group(dataframe):
     sf.get_sql_config()
     engine = sf.get_engine()
