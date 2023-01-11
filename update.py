@@ -16,7 +16,7 @@ def update_fkz(dataframe):
     df_funktion = sf.get_dataframe(sql_query)
 
     # compare what is new in this dataframe
-    df_function_con = df_funktion.merge(dataframe.drop_duplicates(),on=['fkz','fkz_txt'],how='right',indicator=True)
+    df_function_con = df_funktion.merge(dataframe.drop_duplicates(subset=[subset=['fkz']]),on=['fkz','fkz_txt'],how='right',indicator=True)
     df_function_con = df_function_con[df_function_con['_merge'] == 'right_only'][['fkz','fkz_txt']]
 
     #push to database
@@ -33,7 +33,7 @@ def update_group(dataframe):
     df_group = sf.get_dataframe(sql_query)
 
     # compare what is new in this dataframe
-    df_group_con = df_group.merge(dataframe.drop_duplicates(),on=['gruppe','gruppe_txt'],how='right',indicator=True)
+    df_group_con = df_group.merge(dataframe.drop_duplicates(subset=['gruppe']),on=['gruppe','gruppe_txt'],how='right',indicator=True)
     df_group_con = df_group_con[df_group_con['_merge'] == 'right_only'][['gruppe','gruppe_txt']]
 
     #push to database
