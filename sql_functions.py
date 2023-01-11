@@ -56,7 +56,7 @@ def push_to_database(df, table_name, engine, schema):
             df.to_sql(name=table_name, # Name of SQL table
                             con=engine, # Engine or connection
                             if_exists='append', # Drop the table before inserting new values
-                            schema=schema, # Use schmea that was defined earlier
+                            schema=schema, # Use schema that was defined earlier
                             index=False, # Write DataFrame index as a column
                             chunksize=5000, # Specify the number of rows in each batch to be written at a time
                             method='multi') # Pass multiple values in a single INSERT clause
