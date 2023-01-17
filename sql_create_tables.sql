@@ -30,13 +30,13 @@ CREATE TABLE budget_all (ep varchar,
 SELECT DISTINCT state_id
 FROM budget_all ba ; ---überprüfung, welche states hochgeladen wurden / ob das hochladen geklappt hat
 
-DELETE FROM einzelplaene 
+--DELETE FROM einzelplaene 
 WHERE state_id = 15; --weil duplicates nicht gedropt waren
 
-DELETE FROM budget_all
+--DELETE FROM budget_all
 WHERE state_id = 13; --weil duplicates nicht gedropt waren
 
-DELETE FROM kapitel 
+--DELETE FROM kapitel 
 WHERE state_id = 15;
 
 SELECT *
@@ -46,6 +46,12 @@ WHERE state_id = 15;
 SELECT *
 FROM kapitel k  
 WHERE state_id = 15;
+
+SELECT ep
+FROM budget_all
+GROUP BY ep
+ORDER BY ep DESC ;
+
 --anschließend neuerlicher upload via python
 
 GRANT INSERT, REFERENCES, SELECT, TRIGGER, DELETE, TRUNCATE, UPDATE ON TABLE capstone_public_budgeting.state_data TO ridvankücük;

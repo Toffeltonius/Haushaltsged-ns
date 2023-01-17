@@ -17,7 +17,7 @@ def rename_df(df, amount):
                                 'fz':'fkz'}, inplace = True) #sh
     return df
 
-#adds gruppe and counter and alters data types. Adds leading 0s.
+#adds gruppe and counter and alters data types. Adds leading 0s and adds 
 def augment_stuff(df_name):
     df_name['ep'] = df_name['ep'].astype(str)
     df_name['ep'] = df_name['ep'].apply(lambda x:x.zfill(2))
