@@ -1,5 +1,6 @@
 import pandas as pd
 import sqlalchemy as sql
+import numpy as np
 
 
 
@@ -13,16 +14,23 @@ def rename_df(df, amount):
     df.rename(columns = {'bezeichnung':'ep_txt', 'bezeichnung.1':'kapitel_txt', 'bezeichnung_fz' : 'fkz_txt', "fz":"fkz",  #brb
                                 'einzelplan' : 'ep', 'titelbezeichnung' : 'zweckbestimmung', 'kapitelbezeichnung' : 'kapitel_txt', 'einzelplanbezeichnung' : 'ep_txt', 'gruppenbezeichnung' : 'gruppe_txt', 'funktionsbezeichnung' : 'fkz_txt', #berlin
                                 'zählnummer':'counter', 'funktion':'fkz', #nrw 
-                                'einzel-plan':'ep', 'Bezeichnung Funktionenkennzahl':'fkz_txt', #Sachsen
+                                'einzel-plan':'ep', 'Bezeichnung Funktionenkennzahl':'fkz_txt', 'funktionen-\nkennzahl':'fkz', 'bezeichnung_funktionenkennzahl':'fkz_txt', #Sachsen
                                 'fz':'fkz'}, inplace = True) #sh
+    #df.insert(len(df.columns), "fkz", np.NaN) #für sh, später deaktivieren
     return df
 
 #adds gruppe and counter and alters data types. Adds leading 0s and adds 
 def augment_stuff(df_name):
+    df_name['kapitel'] = df_name['kapitel'].astype(str)#reihenfolge geändert
+    #df_name['kapitel'] = df_name['kapitel'].apply(lambda x:x.zfill(4))#4 statt 3 für sh, reihenfolge geändert
+    #df_name.insert(len(df_name.columns), "ep", df_name['kapitel'].astype(str).str[:-2]) #für sh rein
     df_name['ep'] = df_name['ep'].astype(str)
     df_name['ep'] = df_name['ep'].apply(lambda x:x.zfill(2))
-    df_name['kapitel'] = df_name['kapitel'].astype(str)
+    #df_name['kapitel'] = df_name['kapitel'].astype(str) #für sh raus
     df_name['kapitel'] = df_name['kapitel'].str[-3:]
+    df_name['kapitel'] = df_name['kapitel'].apply(lambda x:x.zfill(3)) #filler für sh?
+    #df_name['kapitel'] = df_name['kapitel'].astype(str) #sachsen einschub
+    #df_name['kapitel'] = df_name['kapitel'].str[-2:] #ebenso
     df_name['titel'] = df_name['titel'].astype(str)
     df_name['titel'] = df_name['titel'].apply(lambda x:x.zfill(5))
     df_name['fkz'] = df_name['fkz'].astype(str)
