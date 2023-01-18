@@ -44,13 +44,16 @@ FROM einzelplaene e
 WHERE state_id = 15;
 
 SELECT *
-FROM kapitel k  
-WHERE state_id = 15;
+FROM kapitel k 
+WHERE state_id = 13 AND YEAR = 2019;
 
-SELECT ep
-FROM budget_all
-GROUP BY ep
-ORDER BY ep DESC ;
+SELECT state_id, year 
+FROM einzelplaene e 
+GROUP BY state_id, year 
+ORDER BY state_id DESC ;
+
+--DELETE FROM einzelplaene  
+WHERE state_id = 15 AND YEAR = 2021;
 
 --anschließend neuerlicher upload via python
 
