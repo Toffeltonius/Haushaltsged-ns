@@ -19,6 +19,6 @@ You can find the csv-files provided by the federal states [here.](https://drive.
 
 All credits go to Kevin Voeung, Paul Kotzur, Ridvan Kücük and Juls Schulz.
 
-
+[This project is published under the creative commons attribution-NonCommercial3.0 Unported License.](https://creativecommons.org/licenses/by-nc/3.0/legalcode)
 
 
